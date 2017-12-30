@@ -4,6 +4,8 @@ import { View, StatusBar, Alert } from 'react-native';
 import { Container } from '../components/Container';
 import { Logo } from '../components/Logo';
 import { TextInputWithButton } from '../components/TextInput';
+import { ClearButton } from '../components/Button';
+import { LastConverted } from '../components/Text';
 
 class Home extends React.Component {
 
@@ -44,6 +46,14 @@ class Home extends React.Component {
                     editable={true}
                     onPress={this.handlePressQuoteCurrency}
                 />
+
+                <LastConverted value={2.34} date={new Date()} />
+
+                <ClearButton 
+                    text="Reverse currencies" 
+                    onPress={() => {console.log('Clear button pressed')}} 
+                />
+
             </Container>
         );
     }
