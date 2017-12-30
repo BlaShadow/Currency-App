@@ -1,34 +1,47 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const inputWidth = Dimensions.get('window').width;
 
+const INPUT_HEIGHT = 48;
+const BORDER_RADIOUS = 4;
+
 export default EStyleSheet.create({
-    container:{
-        marginTop: 15,
-        justifyContent: 'center',
+    $baseBackgroundColor: 'white',
+    $baseBackgroundColorModifier: 0.2,
+    container: {
+        width: '95%',
+        height: INPUT_HEIGHT,
+        backgroundColor: 'white',
         alignItems: 'center',
         flexDirection: 'row',
-        backgroundColor: 'white',
-        width: '90%',
-        height: 48,
-        borderRadius: 4
+        marginTop: 15,
+        borderRadius: BORDER_RADIOUS
     },
-    buttonText:{
-        height: 48,
-        padding:10,
-        backgroundColor: 'red',
+    button: {
+        height: INPUT_HEIGHT,
+        padding: 10,
+        borderTopLeftRadius: BORDER_RADIOUS,
+        borderBottomLeftRadius: BORDER_RADIOUS,
         alignItems: 'center',
         justifyContent: 'center',
     },
-    border:{
-        backgroundColor: '#F0F0F0',
-        width: 1
+    text: {
+        color: '$primaryBlue',
+        fontSize: 18
     },
-    input:{
+    border: {
+        backgroundColor: '#E2E2E2',
+        width: StyleSheet.hairlineWidth,
+        height: INPUT_HEIGHT,
+    },
+    input: {
+        flex: 1,
+        height: INPUT_HEIGHT,
+        borderColor: 'transparent',
+        fontSize: 15,
         paddingLeft: 15,
         paddingRight: 15,
-        backgroundColor: '#BDBDBD',
-        color: 'black'
+        color: '#797979'
     }
 });

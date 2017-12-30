@@ -1,25 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import color from 'color';
 import { View, Text, TouchableHighlight, TextInput } from 'react-native';
 
 import styles from './style';
 
-const InputWithButton = ({ buttonText = "", placeHolder="", onPress, editable=true}) => (
-    <View style={styles.container}>
-        <TouchableHighlight onPress={onPress} style={styles.buttonText}>
-            <Text>{buttonText}</Text>
-        </TouchableHighlight>
-        
-        <View style={styles.border} />
+const InputWithButton = ({ buttonText = "", placeHolder="", onPress, editable=true}) => {
 
-        <TextInput
-            placeholder={placeHolder}
-            autoCorrect={false}
-            keyboardType="numeric"
-            style={styles.input}
-         />
-    </View>
-);
+    const highlightedButtonColor = color(styles.$baseBackgroundColor)
+                                    .darken(styles.$baseBackgroundColorModifier);
+    return (
+        <View style={styles.container}>
+            <TouchableHighlight underlayColor={highlightedButtonColor} 
+                onPress={onPress} 
+                style={styles.button}>
+                <Text style={styles.text}>{buttonText}</Text>
+            </TouchableHighlight>
+            
+            <View style={styles.border} />
+
+            <TextInput
+                placeholder={placeHolder}
+                autoCorrect={false}
+                keyboardType="numeric"
+                style={styles.input}
+                editable={editable}
+                underlineColorAndroid="transparent"
+            />
+        </View>
+    );
+};
 
 InputWithButton.propTypes = {
     onPress: PropTypes.func,
