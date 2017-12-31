@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, StatusBar, Alert } from 'react-native';
+import { View, StatusBar, Alert, KeyboardAvoidingView } from 'react-native';
 
 import { Container } from '../components/Container';
 import { Logo } from '../components/Logo';
+import { Header } from '../components/Header'; 
 import { TextInputWithButton } from '../components/TextInput';
 import { ClearButton } from '../components/Button';
 import { LastConverted } from '../components/Text';
@@ -27,33 +28,39 @@ class Home extends React.Component {
         );
     }
 
+    handlePressSetting(){
+        console.log('Setttings button');
+    }
+
     render(){
         return (
             <Container>
                 <StatusBar translucent={false} barStyle="light-content" />
-                <Logo />
-                
-                <TextInputWithButton 
-                    buttonText="USD"
-                    placeHolder="0.00"
-                    editable={true}
-                    onPress={this.handlePressBaseCurrency}
-                />
-    
-                <TextInputWithButton 
-                    buttonText="DOP"
-                    placeHolder="0.00"
-                    editable={true}
-                    onPress={this.handlePressQuoteCurrency}
-                />
+                <Header onPress={this.handlePressSetting} />
+                <KeyboardAvoidingView behavior="padding">
+                    <Logo />
 
-                <LastConverted value={2.34} date={new Date()} />
+                    <TextInputWithButton 
+                        buttonText="USD"
+                        placeHolder="0.00"
+                        editable={true}
+                        onPress={this.handlePressBaseCurrency}
+                    />
+        
+                    <TextInputWithButton 
+                        buttonText="DOP"
+                        placeHolder="0.00"
+                        editable={true}
+                        onPress={this.handlePressQuoteCurrency}
+                    />
 
-                <ClearButton 
-                    text="Reverse currencies" 
-                    onPress={() => {console.log('Clear button pressed')}} 
-                />
+                    <LastConverted value={2.34} date={new Date()} />
 
+                    <ClearButton 
+                        text="Reverse currencies" 
+                        onPress={() => {console.log('Clear button pressed')}} 
+                    />
+                </KeyboardAvoidingView>
             </Container>
         );
     }
