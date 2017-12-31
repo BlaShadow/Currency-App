@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, StatusBar, Alert, KeyboardAvoidingView } from 'react-native';
+import { View, Alert, KeyboardAvoidingView } from 'react-native';
 
 import { Container } from '../components/Container';
+import { LocalStatusBar } from '../components/LocalStatusBar';
 import { Logo } from '../components/Logo';
 import { Header } from '../components/Header'; 
 import { TextInputWithButton } from '../components/TextInput';
@@ -35,7 +36,7 @@ class Home extends React.Component {
     render(){
         return (
             <Container>
-                <StatusBar translucent={false} barStyle="light-content" />
+                <LocalStatusBar />
                 <Header onPress={this.handlePressSetting} />
                 <KeyboardAvoidingView behavior="padding">
                     <Logo />
