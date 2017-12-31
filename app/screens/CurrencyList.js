@@ -2,25 +2,37 @@ import React, { Component } from 'react'
 import { Text, View, FlatList, StatusBar } from 'react-native'
 
 import { Container } from '../components/Container';
-import { LocalStatusBar } from '../components/LocalStatusBar';
+import { DarkStatusBar } from '../components/LocalStatusBar';
+import { ListItem, Separator } from '../components/List';
 import listData from '../data/currency';
 
 export class CurrencyList extends Component {
-  render() {
-    const data = listData;
+    handlePress() {
+        console.log('Selected item');
+    }
 
-    return (
-        <View style={{flex: 1}}>
-            <LocalStatusBar />
-            
-            <FlatList 
-                data={data} 
-                renderItem={ ({item, index}) => <Text>{item}</Text>}
-                keyExtractor={ item => item}
-            />
-        </View>  
-    )
-  }
+    render() {
+        const data = listData;
+
+        return (
+            <View style={{flex: 1}}>
+                <DarkStatusBar />
+
+                <FlatList 
+                    data={data} 
+                    renderItem={ ({item, index}) => (
+                        <ListItem 
+                            text={item}
+                            onPress={this.handlePress}
+                            selected={index % 5 === 0}
+                        />
+                    )}
+                    ItemSeparatorComponent={Separator}
+                    keyExtractor={ item => item}
+                />
+            </View>  
+        )
+    }
 }
 
 export default CurrencyList;

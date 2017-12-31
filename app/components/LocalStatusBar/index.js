@@ -1,3 +1,3 @@
-import LocalStatusBar from './LocalStatusBar';
+import LocalStatusBar, { DarkStatusBar } from './LocalStatusBar';
 
-export { LocalStatusBar };
+export { LocalStatusBar, DarkStatusBar };
