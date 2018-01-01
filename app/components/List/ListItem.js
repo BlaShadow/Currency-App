@@ -9,10 +9,11 @@ import Icon from './icon';
 class ListItem extends Component {
   render() {
     return (
-      <TouchableHighlight onPress={this.props.onPress} underlayColor={'#333333'}>
+      <TouchableHighlight onPress={this.props.handleOnPress} underlayColor={'#333333'}>
         <View style={styles.row}>
             <Text style={styles.text}> {this.props.text} </Text>
             { this.props.selected ? <Icon selected={true} /> : null }
+            { this.props.customIcon }
         </View>
       </TouchableHighlight>
     )
@@ -22,7 +23,8 @@ class ListItem extends Component {
 ListItem.PropTypes = {
     text: PropTypes.string,
     selected: PropTypes.bool,
-    handleOnPress: PropTypes.func
+    handleOnPress: PropTypes.func,
+    customIcon: PropTypes.element
 };
 
 export default ListItem
