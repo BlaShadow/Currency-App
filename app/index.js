@@ -6,8 +6,10 @@ import CurrencyList from './screens/CurrencyList';
 import Options from './screens/Options';
 import ThemeOptions from './screens/ThemeOptions';
 
+import StackNavigator from './config/route';
+
 EStyleSheet.build({
     $primaryBlue: '#4F6D7A', 
 });
 
-export default () => <ThemeOptions />;
+export default () => <StackNavigator />;

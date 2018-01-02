@@ -10,9 +10,17 @@ import { ClearButton } from '../components/Button';
 import { LastConverted } from '../components/Text';
 
 class Home extends React.Component {
+    constructor(props){
+        super(props);
+
+        //Bind those methods
+        this.handlePressSetting = this.handlePressSetting.bind(this);
+        this.handlePressBaseCurrency = this.handlePressBaseCurrency.bind(this);
+        this.handlePressQuoteCurrency = this.handlePressQuoteCurrency.bind(this);
+    }
 
     handlePressBaseCurrency = () => {
-        console.log('Press base');
+        this.props.navigation.navigate('CurrencyList');
     }
 
     handlePressQuoteCurrency = () => {
@@ -30,7 +38,7 @@ class Home extends React.Component {
     }
 
     handlePressSetting(){
-        console.log('Setttings button');
+        this.props.navigation.navigate('Options');
     }
 
     render(){
