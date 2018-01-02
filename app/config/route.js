@@ -18,6 +18,8 @@ const stack = StackNavigator({
     ThemeOptions: {
         screen: ThemeOptions
     },
+}, {
+    mode: 'modal'
 });
 
 export default stack;
