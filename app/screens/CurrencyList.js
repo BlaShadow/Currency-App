@@ -7,6 +7,13 @@ import { ListItem, Separator } from '../components/List';
 import listData from '../data/currency';
 
 export class CurrencyList extends Component {
+    constructor(props){
+        super(props);
+
+        //Bind methods
+        this.handlePress = this.handlePress.bind(this);
+    }
+
     handlePress() {
         console.log('Selected item');
     }
@@ -23,8 +30,9 @@ export class CurrencyList extends Component {
                     renderItem={ ({item, index}) => (
                         <ListItem 
                             text={item}
-                            onPress={this.handlePress}
+                            handleOnPress={this.handlePress}
                             selected={index % 5 === 0}
+                            checked={true}
                         />
                     )}
                     ItemSeparatorComponent={Separator}

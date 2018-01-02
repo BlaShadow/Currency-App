@@ -1,6 +1,6 @@
 import { StackNavigator } from 'react-navigation';
 
-import { HomeScreen, Options, CurrencyList } from '../screens'; 
+import { HomeScreen, Options, CurrencyList, ThemeOptions } from '../screens'; 
 
 const stack = StackNavigator({
     Home: {
@@ -14,7 +14,10 @@ const stack = StackNavigator({
     },
     Options: {
         screen: Options
-    }
+    }, 
+    ThemeOptions: {
+        screen: ThemeOptions
+    },
 });
 
 export default stack;

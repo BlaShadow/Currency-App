@@ -31,12 +31,8 @@ export class ThemeOptions extends Component {
                 <View key={item.color}>
                     <ListItem 
                         handlePress={this.handleItemThemeSelection}
-                        customIcon={
-                            <Ionicons 
-                                name={"ios-document"}
-                                color={item.color}
-                            /> 
-                        }
+                        selected={true}
+                        customColor={item.color}
                         text={item.name} />
 
                     <Separator />
