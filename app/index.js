@@ -9,7 +9,7 @@ import ThemeOptions from './screens/ThemeOptions';
 import StackNavigator from './config/route';
 
 EStyleSheet.build({
-    $primaryBlue: '#4F6D7A', 
+    $primaryBlue: '#03A9F4', 
 });
 
 export default () => <StackNavigator />;

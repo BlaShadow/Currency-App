@@ -75,12 +75,12 @@ class Logo extends Component {
                 <Animated.View style={imageContainerStyle}>
                     <Animated.Image 
                         resizeMode="contain" 
-                        style={[StyleSheet.absoluteFill, {tintColor: '#f0f0f0'}, imageContainerStyle]} 
+                        style={[StyleSheet.absoluteFill, {tintColor: '#78909C'}, imageContainerStyle]} 
                         source={require('./Images/hexagon.png')} />
 
                     <Animated.Image 
                         resizeMode="contain" 
-                        style={imageStyle} 
+                        style={[imageStyle, {tintColor: 'white'}]} 
                         source={require('./Images/two_way.png')} />
 
                 </Animated.View>

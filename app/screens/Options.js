@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Platform } from 'react-native';
+import { Text, View, ScrollView, Platform, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { Container } from '../components/Container';
@@ -22,7 +22,9 @@ class Options extends Component {
     }
 
     handleLinkPress(){
-        console.log('url');
+        const url = 'http://fixer.io/';
+        
+        Linking.openURL(url).catch(err => console.error('An error occurred', err));
     }
 
     render() {
