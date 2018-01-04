@@ -10,7 +10,7 @@ const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
 export class ThemeOptions extends Component {
     
     handleItemThemeSelection(){
-        console.log('item press');
+        
     }
 
     render() {

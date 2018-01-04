@@ -15,7 +15,7 @@ export class CurrencyList extends Component {
     }
 
     handlePress() {
-        console.log('Selected item');
+        
     }
 
     render() {

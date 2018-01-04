@@ -18,7 +18,7 @@ class Options extends Component {
     }
 
     handleThemePress(){
-        this.props.navigation.navigate('ThemeOptions');
+        this.props.navigation.navigate('ThemeOptions', { title: 'Theme Options' });
     }
 
     handleLinkPress(){

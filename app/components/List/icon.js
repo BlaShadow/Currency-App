@@ -9,8 +9,6 @@ const Icon = ({selected, color, checked}) => {
     if(selected){
         iconStyles.push(styles.iconVisible)
     }
-    
-    console.log(color);
 
     if(color){
         iconStyles.push({
