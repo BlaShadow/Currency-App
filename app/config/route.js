@@ -1,10 +1,9 @@
+import { StatusBar } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 import { HomeScreen, Options, CurrencyList, ThemeOptions } from '../screens'; 
 
 const configOptions = (shouldShowHeader) => {
-
-    console.log('Should show header', shouldShowHeader);
     if(shouldShowHeader === false){
         return { header: () => null };
     }
@@ -27,7 +26,10 @@ const stack = StackNavigator({
     Options: configureScreen(Options), 
     ThemeOptions: configureScreen(ThemeOptions),
 }, {
-    mode: 'modal'
+    mode: 'modal',
+    cardStyle: {
+        paddingTop: StatusBar.rcurrentHeight
+    }
 });
 
 export default stack;
