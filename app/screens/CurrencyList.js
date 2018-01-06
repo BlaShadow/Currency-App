@@ -15,7 +15,7 @@ export class CurrencyList extends Component {
     }
 
     handlePress() {
-        
+        this.props.navigation.goBack(null);
     }
 
     render() {

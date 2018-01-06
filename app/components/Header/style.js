@@ -6,9 +6,6 @@ const styles = EStyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
-        '@media android':{
-            marginTop: 10
-        }
     },
     image:{
         marginTop: 15,

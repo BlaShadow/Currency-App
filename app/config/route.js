@@ -28,7 +28,7 @@ const stack = StackNavigator({
 }, {
     mode: 'modal',
     cardStyle: {
-        paddingTop: StatusBar.rcurrentHeight
+        paddingTop: StatusBar.currentHeight
     }
 });
 
