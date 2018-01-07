@@ -9,7 +9,8 @@ const configOptions = (shouldShowHeader) => {
     }
 
     return ({ navigation }) => ({
-        headerTitle: navigation.state.params.title
+        headerTitle: navigation.state.params.title,
+        headerBackTitle: 'Atrás'
     });
 }
 
@@ -20,11 +21,15 @@ const configureScreen = (screenComponent, shouldShowHeader = true) => {
     }
 }
 
-const stack = StackNavigator({
+const homeStackNavigator = StackNavigator({
     Home: configureScreen(HomeScreen, false), 
-    CurrencyList: configureScreen(CurrencyList),
     Options: configureScreen(Options), 
     ThemeOptions: configureScreen(ThemeOptions),
+});
+
+const stack = StackNavigator({
+    Home: configureScreen(homeStackNavigator, false),  
+    CurrencyList: configureScreen(CurrencyList),
 }, {
     mode: 'modal',
     cardStyle: {
