@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Alert, KeyboardAvoidingView } from 'react-native';
+import  { connect } from 'react-redux';
 
 import { Container } from '../components/Container';
 import { LocalStatusBar } from '../components/LocalStatusBar';
@@ -9,6 +10,8 @@ import { TextInputWithButton } from '../components/TextInput';
 import { ClearButton } from '../components/Button';
 import { LastConverted } from '../components/Text';
 
+import { changeCurrencyAmount, swapCurrency } from '../actions/currencies';
+ 
 class Home extends React.Component {
     constructor(props){
         super(props);
@@ -17,6 +20,7 @@ class Home extends React.Component {
         this.handlePressSetting = this.handlePressSetting.bind(this);
         this.handlePressBaseCurrency = this.handlePressBaseCurrency.bind(this);
         this.handlePressQuoteCurrency = this.handlePressQuoteCurrency.bind(this);
+        this.handleChangeText = this.handleChangeText.bind(this);
     }
 
     handlePressBaseCurrency = () => {
@@ -41,6 +45,12 @@ class Home extends React.Component {
         this.props.navigation.navigate('Options', { title: 'Settings' });
     }
 
+    handleChangeText = (text) => {
+        console.log("Changing test", text);
+
+        this.props.dispatch(changeCurrencyAmount(text));
+    };
+
     render(){
         return (
             <Container>
@@ -53,6 +63,7 @@ class Home extends React.Component {
                         buttonText="USD"
                         placeHolder="0.00"
                         editable={true}
+                        onChangeText={this.handleChangeText}
                         onPress={this.handlePressBaseCurrency}
                     />
         
@@ -75,4 +86,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default connect()(Home);
