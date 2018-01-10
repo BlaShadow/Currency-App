@@ -1,13 +1,29 @@
 import { SWAP_CURRENCY, CHANGE_CURRENCY_AMOUNT } from '../actions/currencies';
 
-const initialState = {};
+const initialState = {
+    baseCurrency: 'USD',
+    quoteCurrency: 'GBP',
+    amount: 100,
+    conversions: {
+    }
+};
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case CHANGE_CURRENCY_AMOUNT:
-            return {};
+            return {
+                ...state, 
+                amount: action.amount
+            };
         case SWAP_CURRENCY:
-            return {};
+            const baseCurrency = state.quoteCurrency;
+            const quoteCurrency = state.baseCurrency;
+
+            return {
+                ...state, 
+                baseCurrency, 
+                quoteCurrency
+            };
         default: 
             return state;
     }
