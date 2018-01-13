@@ -20,6 +20,7 @@ export class CurrencyList extends Component {
 
     render() {
         const data = listData;
+        const selected = this.props.navigation.state.params.selected;
 
         return (
             <View style={{flex: 1}}>
@@ -31,7 +32,7 @@ export class CurrencyList extends Component {
                         <ListItem 
                             text={item}
                             handleOnPress={this.handlePress}
-                            selected={index % 5 === 0}
+                            selected={item === selected}
                             checked={true}
                         />
                     )}
