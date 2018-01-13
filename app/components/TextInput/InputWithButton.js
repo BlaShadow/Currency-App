@@ -5,7 +5,7 @@ import { View, Text, TouchableHighlight, TextInput } from 'react-native';
 
 import styles from './style';
 
-const InputWithButton = ({ buttonText = "", placeHolder="", onPress, editable=true, onChangeText}) => {
+const InputWithButton = ({ buttonText = "", placeHolder="", onPress, editable=true, onChangeText, value}) => {
 
     const highlightedButtonColor = color(styles.$baseBackgroundColor)
                                     .darken(styles.$baseBackgroundColorModifier);
@@ -25,6 +25,7 @@ const InputWithButton = ({ buttonText = "", placeHolder="", onPress, editable=tr
                 keyboardType="numeric"
                 style={styles.input}
                 editable={editable}
+                value={value.toString()}
                 onChangeText={onChangeText}
                 underlineColorAndroid="transparent"
             />
