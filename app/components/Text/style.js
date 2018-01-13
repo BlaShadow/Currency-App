@@ -5,7 +5,8 @@ const styles = EStyleSheet.create({
         margin: 10
     },
     text:{
-        color: 'white'
+        color: 'white',
+        textAlign: 'center'
     }
 });
 
