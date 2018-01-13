@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Alert, KeyboardAvoidingView } from 'react-native';
 import  { connect } from 'react-redux';
+import numeral from 'numeral';
 
 import { Container } from '../components/Container';
 import { LocalStatusBar } from '../components/LocalStatusBar';
@@ -15,6 +16,8 @@ import { changeCurrencyAmount, swapCurrency } from '../actions/currencies';
 class Home extends React.Component {
     constructor(props){
         super(props);
+
+        console.log('Home props ', props);
 
         //Bind those methods
         this.handlePressSetting = this.handlePressSetting.bind(this);
@@ -48,7 +51,11 @@ class Home extends React.Component {
     handleChangeText = (text) => {
         console.log("Changing test", text);
 
-        this.props.dispatch(changeCurrencyAmount(text));
+        if(text !== ""){
+            this.props.dispatch(changeCurrencyAmount(text));
+        } else {
+            this.props.dispatch(changeCurrencyAmount(0));
+        }
     };
 
     render(){
@@ -60,17 +67,19 @@ class Home extends React.Component {
                     <Logo />
 
                     <TextInputWithButton 
-                        buttonText="USD"
+                        buttonText={this.props.baseCurrency}
                         placeHolder="0.00"
                         editable={true}
+                        value={this.props.amount}
                         onChangeText={this.handleChangeText}
                         onPress={this.handlePressBaseCurrency}
                     />
         
                     <TextInputWithButton 
-                        buttonText="DOP"
+                        buttonText={this.props.quoteCurrency}
                         placeHolder="0.00"
-                        editable={true}
+                        editable={false}
+                        value={this.props.convertionSelector}
                         onPress={this.handlePressQuoteCurrency}
                     />
 
@@ -78,7 +87,7 @@ class Home extends React.Component {
 
                     <ClearButton 
                         text="Reverse currencies" 
-                        onPress={() => {console.log('Clear button pressed')}} 
+                        onPress={() => {this.props.dispatch(swapCurrency())}} 
                     />
                 </KeyboardAvoidingView>
             </Container>
@@ -86,4 +95,20 @@ class Home extends React.Component {
     }
 }
 
-export default connect()(Home);
+const mapStateToProps = (state) => {
+    const baseCurrency = state.currencies.baseCurrency;
+    const quoteCurrency = state.currencies.quoteCurrency;
+    const amount = state.currencies.amount;
+    const convertionSelector = numeral(amount * 48).format('$0,0.00');
+
+    console.log('maps state to props', baseCurrency, quoteCurrency, state);
+
+    return{
+        baseCurrency,
+        quoteCurrency,
+        amount,
+        convertionSelector
+    }
+};
+
+export default connect(mapStateToProps)(Home);
