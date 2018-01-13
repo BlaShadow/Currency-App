@@ -20,7 +20,7 @@ class ListItem extends Component {
     }
 }
 
-ListItem.PropTypes = {
+ListItem.propTypes = {
     text: PropTypes.string,
     selected: PropTypes.bool,
     handleOnPress: PropTypes.func,
