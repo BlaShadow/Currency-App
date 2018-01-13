@@ -1,4 +1,4 @@
-import { SWAP_CURRENCY, CHANGE_CURRENCY_AMOUNT } from '../actions/currencies';
+import { SWAP_CURRENCY, CHANGE_CURRENCY_AMOUNT, SET_BASE_CURRENCY, SET_QUOTE_CURRENCY } from '../actions/currencies';
 
 const initialState = {
     baseCurrency: 'USD',
@@ -15,6 +15,7 @@ const reducer = (state = initialState, action) => {
                 ...state, 
                 amount: action.amount
             };
+
         case SWAP_CURRENCY:
             const baseCurrency = state.quoteCurrency;
             const quoteCurrency = state.baseCurrency;
@@ -24,6 +25,19 @@ const reducer = (state = initialState, action) => {
                 baseCurrency, 
                 quoteCurrency
             };
+
+        case SET_BASE_CURRENCY:
+            return{
+                ...state,
+                baseCurrency: action.baseCurrency
+            }
+
+        case SET_QUOTE_CURRENCY:
+            return{
+                ...state,
+                quoteCurrency: action.quoteCurrency
+            }
+
         default: 
             return state;
     }
