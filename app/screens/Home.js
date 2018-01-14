@@ -28,20 +28,18 @@ class Home extends React.Component {
 
     handlePressBaseCurrency = () => {
         this.props.navigation.navigate('CurrencyList', {
-            title: 'Currency List'
+            title: 'Currency List',
+            selected: this.props.baseCurrency,
+            typeCurrency: 'BASE'
         });
     }
 
     handlePressQuoteCurrency = () => {
-        Alert.alert(
-            'You tapped the button!',
-            'Second message',
-            [
-                {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-                {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                {text: 'OK', onPress: () => console.log('OK Pressed')},
-            ],
-        );
+        this.props.navigation.navigate('CurrencyList', {
+            title: 'Quote List',
+            selected: this.props.quoteCurrency,
+            typeCurrency: 'QUOTE'
+        });
     }
 
     handlePressSetting(){
