@@ -30,6 +30,7 @@ export class CurrencyList extends Component {
         //Dispatch action
         this.props.dispatch(handler(currency));
 
+        //Go back
         this.props.navigation.goBack(null);
     }
 
