@@ -12,7 +12,7 @@ class ListItem extends Component {
             <TouchableHighlight onPress={this.props.handleOnPress} underlayColor={'#333333'}>
                 <View style={styles.row}>
                     <Text style={styles.text}> {this.props.text} </Text>
-                    { this.props.selected ? <Icon selected={true} color={this.props.customColor} /> : null }
+                    { this.props.selected ? <Icon checked={this.props.checked} selected={true} color={this.props.customColor} /> : null }
                     { this.props.customIcon }
                 </View>
             </TouchableHighlight>
