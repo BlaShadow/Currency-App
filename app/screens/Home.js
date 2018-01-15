@@ -11,7 +11,7 @@ import { TextInputWithButton } from '../components/TextInput';
 import { ClearButton } from '../components/Button';
 import { LastConverted } from '../components/Text';
 
-import { changeCurrencyAmount, swapCurrency } from '../actions/currencies';
+import { changeCurrencyAmount, swapCurrency, startFetchForCurrency } from '../actions/currencies';
  
 class Home extends React.Component {
     constructor(props){
@@ -24,13 +24,15 @@ class Home extends React.Component {
         this.handlePressBaseCurrency = this.handlePressBaseCurrency.bind(this);
         this.handlePressQuoteCurrency = this.handlePressQuoteCurrency.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
+        this.handleSelectedBaseCurrency = this.handleSelectedBaseCurrency.bind(this);
     }
 
     handlePressBaseCurrency = () => {
         this.props.navigation.navigate('CurrencyList', {
             title: 'Currency List',
             selected: this.props.baseCurrency,
-            typeCurrency: 'BASE'
+            typeCurrency: 'BASE',
+            backAction: this.handleSelectedBaseCurrency
         });
     }
 
@@ -43,7 +45,9 @@ class Home extends React.Component {
     }
 
     handlePressSetting(){
-        this.props.navigation.navigate('Options', { title: 'Settings' });
+        const key = this.props.navigation.state.key;
+
+        this.props.navigation.navigate('Options', { title: 'Settings', backKey: key });
     }
 
     handleChangeText = (text) => {
@@ -54,6 +58,10 @@ class Home extends React.Component {
         } else {
             this.props.dispatch(changeCurrencyAmount(0));
         }
+    };
+
+    handleSelectedBaseCurrency = (backBurrency) => {
+        console.log('do some magic stuff');
     };
 
     render(){
@@ -81,7 +89,11 @@ class Home extends React.Component {
                         onPress={this.handlePressQuoteCurrency}
                     />
 
-                    <LastConverted value={2.34} date={new Date()} />
+                    <LastConverted 
+                        value={this.props.rate} 
+                        base={this.props.baseCurrency} 
+                        quote={this.props.quoteCurrency}
+                        date={new Date()} />
 
                     <ClearButton 
                         text="Reverse currencies" 
@@ -91,21 +103,39 @@ class Home extends React.Component {
             </Container>
         );
     }
+
+    updateRates(){
+        if(this.props.shouldLoadRates){
+            this.props.dispatch(startFetchForCurrency(this.props.baseCurrency));
+        }
+    }
+
+    componentWillMount(){
+        this.updateRates();
+    }
+
+    componentDidUpdate(){
+        this.updateRates();
+    }
 }
 
 const mapStateToProps = (state) => {
     const baseCurrency = state.currencies.baseCurrency;
     const quoteCurrency = state.currencies.quoteCurrency;
     const amount = state.currencies.amount;
-    const convertionSelector = numeral(amount * 48).format('$0,0.00');
+    const shouldLoadRates = state.currencies.conversions[baseCurrency] === undefined;
+    const rate = !shouldLoadRates ? state.currencies.conversions[baseCurrency][quoteCurrency] : 0;
+    const convertionSelector = numeral(amount * rate).format('$0,0.00');
+    
+    console.log('quote currency rate', rate, shouldLoadRates);
 
-    console.log('maps state to props', baseCurrency, quoteCurrency, state);
-
-    return{
+    return {
         baseCurrency,
         quoteCurrency,
         amount,
-        convertionSelector
+        convertionSelector,
+        shouldLoadRates,
+        rate
     }
 };
 
