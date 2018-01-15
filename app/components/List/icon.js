@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import { Text, View, Image } from 'react-native'
+import { connect } from 'react-redux'
 
 import styles from './style';
 
-const Icon = ({selected, color, checked}) => {
+const Icon = ({selected, color, checked, themeColor}) => {
     const iconStyles = [styles.iconContainer];
 
     if(selected){
         iconStyles.push(styles.iconVisible)
     }
+
+    iconStyles.push({
+        backgroundColor: themeColor
+    });
 
     if(color){
         iconStyles.push({
@@ -19,8 +24,14 @@ const Icon = ({selected, color, checked}) => {
     return (
         <View style={iconStyles} >
             { checked ? <Image style={styles.icon} source={require('./images/check.png')} /> : null }
-        </ View>
+        </View>
     );
 }
 
-export default Icon
+const stateToProps = (state) => {
+    return {
+        themeColor: state.appState.mainColor
+    }
+};
+
+export default connect(stateToProps)(Icon)
