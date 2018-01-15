@@ -1,10 +1,12 @@
-import { SWAP_CURRENCY, CHANGE_CURRENCY_AMOUNT, SET_BASE_CURRENCY, SET_QUOTE_CURRENCY } from '../actions/currencies';
+import { SWAP_CURRENCY, CHANGE_CURRENCY_AMOUNT, SET_BASE_CURRENCY, SET_QUOTE_CURRENCY, SET_RATE_CURRENCY } from '../actions/currencies';
 
 const initialState = {
+    isFetching: false,
     baseCurrency: 'USD',
     quoteCurrency: 'GBP',
     amount: 100,
     conversions: {
+
     }
 };
 
@@ -27,17 +29,25 @@ const reducer = (state = initialState, action) => {
             };
 
         case SET_BASE_CURRENCY:
-            return{
+            return {
                 ...state,
                 baseCurrency: action.baseCurrency
             }
 
         case SET_QUOTE_CURRENCY:
-            return{
+            return {
                 ...state,
                 quoteCurrency: action.quoteCurrency
             }
-
+        
+        case SET_RATE_CURRENCY:
+            const conversions = {...state.conversions};
+            conversions[action.currency] = action.rates;
+            
+            return {
+                ...state,
+                conversions
+            };
         default: 
             return state;
     }
