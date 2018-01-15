@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Text, View, ScrollView, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { DarkStatusBar } from '../components/LocalStatusBar';
 import { Separator, ListItem } from '../components/List';
+import { setThemePrimaryColor } from '../actions/appState';
 
 const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
 
 export class ThemeOptions extends Component {
     
-    handleItemThemeSelection(){
-        
+    handleItemThemeSelection(color){
+        this.props.dispatch(setThemePrimaryColor(color));
+
+        const backKey = this.props.navigation.state.params.goBackKey;
+
+        console.log('Bakc key theme options', backKey);
+
+        //Go back
+        this.props.navigation.goBack(backKey);
     }
 
     render() {
-        //'#42A5F5', '#29B6F6', '#26C6DA', '#66BB6A', '#9CCC65', '#2979FF', '#FF7043'
         const colors = [
             { color: '#42A5F5', name: 'Color #42A5F5'},
             { color: '#29B6F6', name: 'Color #29B6F6'},
@@ -32,8 +40,9 @@ export class ThemeOptions extends Component {
                 { colors.map((item) => (
                     <View key={item.color}>
                         <ListItem 
-                            handleOnPress={this.handleItemThemeSelection}
+                            handleOnPress={ () => this.handleItemThemeSelection(item.color) }
                             selected={true}
+                            checked={this.props.selected == item.color}
                             customColor={item.color}
                             text={item.name} />
 
@@ -45,4 +54,8 @@ export class ThemeOptions extends Component {
     }
 }
 
-export default ThemeOptions
+const stateToProps = (state) => ({
+    color: state.appState.mainColor
+});
+
+export default connect(stateToProps)(ThemeOptions);
