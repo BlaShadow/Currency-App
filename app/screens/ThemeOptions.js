@@ -16,8 +16,6 @@ export class ThemeOptions extends Component {
 
         const backKey = this.props.navigation.state.params.goBackKey;
 
-        console.log('Bakc key theme options', backKey);
-
         //Go back
         this.props.navigation.goBack(backKey);
     }

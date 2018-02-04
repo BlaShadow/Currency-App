@@ -20,8 +20,6 @@ class Options extends Component {
     handleThemePress(){
         const key = this.props.navigation.state.params.backKey;
 
-        console.log('Bakc key options', key);
-
         this.props.navigation.navigate('ThemeOptions', { title: 'Theme Options', goBackKey: key });
     }
 

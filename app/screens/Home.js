@@ -17,8 +17,6 @@ class Home extends React.Component {
     constructor(props){
         super(props);
 
-        console.log('Home props ', props);
-
         //Bind those methods
         this.handlePressSetting = this.handlePressSetting.bind(this);
         this.handlePressBaseCurrency = this.handlePressBaseCurrency.bind(this);
@@ -51,8 +49,6 @@ class Home extends React.Component {
     }
 
     handleChangeText = (text) => {
-        console.log("Changing test", text);
-
         if(text !== ""){
             this.props.dispatch(changeCurrencyAmount(text));
         } else {
@@ -126,8 +122,6 @@ const mapStateToProps = (state) => {
     const shouldLoadRates = state.currencies.conversions[baseCurrency] === undefined;
     const rate = !shouldLoadRates ? state.currencies.conversions[baseCurrency][quoteCurrency] : 0;
     const convertionSelector = numeral(amount * rate).format('$0,0.00');
-    
-    console.log('quote currency rate', rate, shouldLoadRates);
 
     return {
         baseCurrency,

@@ -37,9 +37,8 @@ export const startFetchForCurrency = (currency) => {
                 dispatch(setCurrencyRate(currency, data.rates));
             })
             .catch((error) => {
-                dispatch(setNormalState());
-                
                 console.log(error);
+                dispatch(setNormalState());
             });
     }
 }
