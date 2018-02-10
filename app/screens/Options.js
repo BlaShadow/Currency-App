@@ -15,6 +15,7 @@ class Options extends Component {
         //Bind functions
         this.handleThemePress = this.handleThemePress.bind(this);
         this.handleLinkPress = this.handleLinkPress.bind(this);
+        this.handleAboutPress = this.handleAboutPress.bind(this);
     }
 
     handleThemePress(){
@@ -27,6 +28,10 @@ class Options extends Component {
         const url = 'http://fixer.io/';
         
         Linking.openURL(url).catch(err => console.error('An error occurred', err));
+    }
+
+    handleAboutPress(){
+        this.props.navigation.navigate('AboutScreen', { title: 'About'});
     }
 
     render() {
@@ -56,6 +61,17 @@ class Options extends Component {
                         />
                     }
                     handleOnPress={this.handleLinkPress} 
+                />
+
+                <ListItem     
+                    text="About" 
+                    customIcon={
+                        <Ionicons 
+                            name={`${ICON_PREFIX}-arrow-forward`}
+                            color={"#868686"}
+                        />
+                    }
+                    handleOnPress={this.handleAboutPress} 
                 />
 
                 <Separator />
