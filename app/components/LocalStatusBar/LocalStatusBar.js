@@ -1,8 +1,18 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, View } from 'react-native';
 
-const DarkStatusBar = () => <StatusBar backgroundColor="blue" translucent={true} barStyle="dark-content" />
+const statusWrapStyles = []
 
-export default () => <StatusBar backgroundColor="blue" translucent={false} barStyle="light-content" />
+const DarkStatusBar = () => (
+    <View style={statusWrapStyles}>
+        <StatusBar backgroundColor="#333333" translucent={true} barStyle="dark-content" />
+    </View>
+)
+
+export default () => (
+    <View style={statusWrapStyles}>
+        <StatusBar backgroundColor="#333333" translucent={true} barStyle="light-content" />
+    </View>
+)
 
 export { DarkStatusBar };

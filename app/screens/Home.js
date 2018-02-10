@@ -54,11 +54,11 @@ class Home extends React.Component {
         } else {
             this.props.dispatch(changeCurrencyAmount(0));
         }
-    };
+    }
 
     handleSelectedBaseCurrency = (backBurrency) => {
         console.log('do some magic stuff');
-    };
+    }
 
     render(){
         return (
@@ -91,6 +91,7 @@ class Home extends React.Component {
                         quote={this.props.quoteCurrency}
                         date={new Date()} />
 
+                    
                     <ClearButton 
                         text="Reverse currencies" 
                         onPress={() => {this.props.dispatch(swapCurrency())}} 
