@@ -27,7 +27,6 @@ export default EStyleSheet.create({
         justifyContent: 'center',
     },
     text: {
-        color: '$primaryBlue',
         fontSize: 18
     },
     border: {

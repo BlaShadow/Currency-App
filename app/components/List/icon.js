@@ -8,12 +8,10 @@ const Icon = ({selected, color, checked, themeColor}) => {
     const iconStyles = [styles.iconContainer];
 
     if(selected){
-        iconStyles.push(styles.iconVisible)
+        iconStyles.push({
+            backgroundColor: themeColor
+        });
     }
-
-    iconStyles.push({
-        backgroundColor: themeColor
-    });
 
     if(color){
         iconStyles.push({
