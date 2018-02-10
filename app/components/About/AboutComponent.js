@@ -1,24 +1,8 @@
 import React, { PureComponent } from 'react'
 import { Text, View, Linking } from 'react-native'
-import PropTypes from 'prop-types'
+import { LinkComponent } from '../LinkComponent'
 
 import styles from './style'
-
-class LinkComponent extends PureComponent{
-    render(){
-        return (
-            <Text style={{color: 'blue'}}
-                  onPress={() => Linking.openURL(this.props.url)}>
-                {this.props.children}
-            </Text>
-        );
-    }
-}
-
-LinkComponent.propTypes = {
-    children: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired
-}
 
 export default class About extends PureComponent {
   render() {
@@ -33,7 +17,7 @@ export default class About extends PureComponent {
         </Text>
 
         <Text style={styles.content}> All icons and resources are from  
-            <LinkComponent url="https://www.flaticon.com/"> Icons </LinkComponent> 
+            <LinkComponent url="https://www.flaticon.com/"> FlatIcon.com </LinkComponent> 
         </Text>
 
         <Text style={[styles.content, {textAlign: 'center'}]}> 
