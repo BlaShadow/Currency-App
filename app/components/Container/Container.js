@@ -5,20 +5,21 @@ import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 import styles from './styles';
 
-const Container = ({ children, color }) => {
-    const containerStyles = [styles.container];
+class Container extends React.PureComponent {
+    render(){
+        const { children, color } = this.props;
+        const containerStyles = [styles.container];
 
-    if(color != undefined){
         containerStyles.push({backgroundColor: color});
+        
+        return (
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+                <View style={containerStyles}>
+                    {children}
+                </View>
+            </TouchableWithoutFeedback>
+        );
     }
-
-    return (
-        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-            <View style={containerStyles}>
-                {children}
-            </View>
-        </TouchableWithoutFeedback>
-    );
 }
 
 Container.propTypes = {
@@ -27,8 +28,9 @@ Container.propTypes = {
 
 const stateToProps = (state) => {
     return {
-        color: state.backgroundColor
+        color: state.appState.mainColor
     };
 };
 
 export default connect(stateToProps)(Container);
+
