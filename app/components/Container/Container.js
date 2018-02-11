@@ -5,7 +5,7 @@ import { View, TouchableWithoutFeedback, Keyboard, StatusBar } from 'react-nativ
 
 import styles from './styles';
 
-class Container extends React.PureComponent {
+export class Container extends React.PureComponent {
     render(){
         const { children, color } = this.props;
         const containerStyles = [styles.container];
