@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render About correctly 1`] = `
+<View
+  style={undefined}
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={undefined}
+  >
+     Currency Converter 
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={undefined}
+  >
+    Feel free to use this app, this app it's a test of the React native Tech, if you got any errors send a feedback just contact me at Github
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "blue",
+        }
+      }
+    >
+       @blashadow 
+    </Text>
+     or my personal web
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "blue",
+        }
+      }
+    >
+       Blog 
+    </Text>
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={undefined}
+  >
+     All icons and resources are from
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "blue",
+        }
+      }
+    >
+       FlatIcon.com 
+    </Text>
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        undefined,
+        Object {
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Version 1.0
+  </Text>
+</View>
+`;
