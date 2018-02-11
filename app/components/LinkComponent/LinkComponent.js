@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { Text, View, Linking } from 'react-native'
 import PropTypes from 'prop-types'
 
-class LinkComponent extends PureComponent{
+export class LinkComponent extends PureComponent{
     render(){
         return (
             <Text style={{color: 'blue'}}
@@ -17,5 +17,3 @@ LinkComponent.propTypes = {
     children: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired
 }
-
-export default LinkComponent;
