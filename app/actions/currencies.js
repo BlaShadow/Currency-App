@@ -25,6 +25,12 @@ export const setQuoteCurrency = (quoteCurrency) => ({
     quoteCurrency
 });
 
+export const setCurrencyRate = (currency, rates) => ({
+    type: SET_RATE_CURRENCY,
+    currency,
+    rates
+});
+
 export const startFetchForCurrency = (currency) => {
     return (dispatch) => {
         dispatch(setWaitingState());
@@ -42,9 +48,3 @@ export const startFetchForCurrency = (currency) => {
             });
     }
 }
-
-export const setCurrencyRate = (currency, rates) => ({
-    type: SET_RATE_CURRENCY,
-    currency,
-    rates
-});
