@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import color from 'color';
+import color from 'color'
 import { connect } from 'react-redux'
 import { View, Text, TouchableHighlight, TextInput } from 'react-native';
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, Platform, Linking } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 
 import { Container } from '../components/Container';
 import { DarkStatusBar } from '../components/LocalStatusBar';
 import { ListItem, Separator } from '../components/List';
+import { Icon } from '../components/Icon'
 
 const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
 
@@ -42,10 +42,7 @@ class Options extends Component {
                 <ListItem 
                     text="Theme" 
                     customIcon={
-                        <Ionicons 
-                            name={`${ICON_PREFIX}-arrow-forward`}
-                            color={"#868686"}
-                        />
+                        <Icon name="next" />
                     }
                     handleOnPress={this.handleThemePress} 
                 />
@@ -55,10 +52,7 @@ class Options extends Component {
                 <ListItem     
                     text="Fixer.io" 
                     customIcon={
-                        <Ionicons 
-                            name={`${ICON_PREFIX}-link`}
-                            color={"#868686"}
-                        />
+                        <Icon name="link" />
                     }
                     handleOnPress={this.handleLinkPress} 
                 />
@@ -66,10 +60,7 @@ class Options extends Component {
                 <ListItem     
                     text="About" 
                     customIcon={
-                        <Ionicons 
-                            name={`${ICON_PREFIX}-arrow-forward`}
-                            color={"#868686"}
-                        />
+                        <Icon name="next" />
                     }
                     handleOnPress={this.handleAboutPress} 
                 />

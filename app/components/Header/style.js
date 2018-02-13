@@ -5,7 +5,7 @@ const styles = EStyleSheet.create({
         position: 'absolute',
         top: 0,
         left: 0,
-        right: 0
+        right: 0,
     },
     image:{
         marginTop: 15,

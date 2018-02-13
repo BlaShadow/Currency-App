@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TouchableHighlight } from 'react-native';
-import color from 'color';
 
-import styles from './style';
-import Icon from './icon';
+import styles from './style'
+import Icon from './icon'
 
 class ListItem extends Component {
     render() {

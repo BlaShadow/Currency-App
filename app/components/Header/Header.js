@@ -8,11 +8,14 @@ const Header = ({ onPress }) => {
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.button} onPress={onPress}>
-                <Image resizeMode="contain" style={styles.image} source={require('./Images/settings.png')} />
+                <Image resizeMode="contain" 
+                    style={styles.image} 
+                    source={require('./Images/settings.png')} 
+                />
             </TouchableOpacity>
         </View>
-    );
-};
+    )
+}
 
 Header.propTypes = {
     onPress: PropTypes.func

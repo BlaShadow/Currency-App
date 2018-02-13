@@ -64,7 +64,9 @@ class Home extends React.Component {
         return (
             <Container>
                 <LocalStatusBar />
+                
                 <Header onPress={this.handlePressSetting} />
+
                 <KeyboardAvoidingView behavior="padding">
                     <Logo />
 

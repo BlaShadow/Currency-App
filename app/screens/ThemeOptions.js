@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, ScrollView, Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 
 import { DarkStatusBar } from '../components/LocalStatusBar';
 import { Separator, ListItem } from '../components/List';
