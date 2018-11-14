@@ -18,5 +18,5 @@ https://play.google.com/store/apps/details?id=org.shadow.currencyapp&hl=en
 
 ## Screenshots
 
-![Schema](https://github.com/BlaShadow/Currency-App/blob/master/screenshots/image_1.png)
-![Schema](https://github.com/BlaShadow/Currency-App/blob/master/screenshots/image_2.png)
+![Screen App 1](https://github.com/BlaShadow/Currency-App/blob/master/screenshots/image_1.png)
+![Screen App 2](https://github.com/BlaShadow/Currency-App/blob/master/screenshots/image_2.png)
