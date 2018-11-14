@@ -34,8 +34,13 @@ export const setCurrencyRate = (currency, rates) => ({
 export const startFetchForCurrency = (currency) => {
     return (dispatch) => {
         dispatch(setWaitingState());
+        
+        let access_key = "75289d2bdfe605dfdab5ca14f222ade7"
+        let url = `https://api.exchangeratesapi.io/latest?base=${currency}&access_key=${access_key}`
+        
+        console.log("URL - ", url)
 
-        fetch(`https://api.fixer.io/latest?base=${currency}`)
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 dispatch(setNormalState());
